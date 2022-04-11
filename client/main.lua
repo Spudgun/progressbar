@@ -16,6 +16,7 @@ local Action = {
         anim = nil,
         flags = 0,
         task = nil,
+        clearPedTasks = true,
     },
     prop = {
         model = nil,
@@ -231,7 +232,9 @@ function ActionCleanup()
             ClearPedSecondaryTask(ped)
             StopAnimTask(ped, Action.animDict, Action.anim, 1.0)
         else
-            ClearPedTasks(ped)
+            if Action.animation.clearPedTasks then
+                ClearPedTasks(ped)
+            end
         end
     end
 
